@@ -1,10 +1,8 @@
-import './App.css';
-import Movie from './hoc/movie';
+import "./App.css";
+import Counter from "./hooks/counter";
 
 function App() {
-  return (
-    <Movie />
-  );
+  return <Counter />;
 }
 
 export default App;
