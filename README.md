@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+# Higher Order Components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We use higher order components to reuse logic across components.
 
-## Available Scripts
+### Example: 
+Imagine we have 3 components and in all these components we want to have some kind of a tooltip behaviour. So, when we hover our mouse over these components we want to see the tooltip and when we move away from it the tooltip should disappear.
 
-In the project directory, you can run:
+#### How are we going to implement this ?
 
-### `npm start`
+##### Without higher order component
+Well, in the first component we need some kind of a state like a boolean flag called showToolTip. Next we should handle the mouse events like mouseOver and mouseOut. In our event handlers we need to change state. So, we need to reset the value of our boolean field i.e. showToolTip. Also in the component, we need to conditionally render the tooltip depending on the show tooltip flag. Now, we need to repeat the same logic in the second and third component as well. But here's the problem, if we want to change how our tooltips work, we have to do it in 3 different places. We use higher order components to solve this problem.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### With higher order component
+Let's imagine we have a component and in this component we want to add the tooltip functionality. We create a new function and pass the component as an argument to this function. In this function we will return a new component that wraps our original component. In this new component we will implement all the common functionality such as showing a tooltip.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+As another example consider we have multiple components that are fetching data from the backend. Whenever it is fetching data, we want to show a loader icon. We can implement that logic inside the wrapper component and with this we no longer have to repeat the logic across different components.
