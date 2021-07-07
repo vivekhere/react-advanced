@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 
 function Counter(props) {
   // const array = useState(0); // return array with 2 elements
@@ -8,6 +8,17 @@ function Counter(props) {
   // Using the array destructuring syntax the above code can be return as
   const [count, setCount] = useState(0);
   const [name, setName] = useState("");
+
+  // This method allows us to hook into our components lifecycle method.
+  useEffect(() => {
+    // componentDidMount(), componentDidUpdate()
+    document.title = `${name} has clicked ${count} times.`;
+
+    // componentWillUnmount()
+    return () => {
+      console.log("Clean up");
+    };
+  });
 
   return (
     <Fragment>
