@@ -25,3 +25,11 @@ As another example consider we have multiple components that are fetching data f
 Since React@16.8, we got a new feature called Hooks that allow us to build functional components with all the features we have in the class components. So, we can use state and life-cycle features of class component.
 
 A Hook is a function that allows us to hook into react features like working with state or life-cycle methods.
+
+## Context
+
+Context was introduced to solve a problem in react called 'Prop Drilling'. Prop drilling is the process in a React app where props are passed from one part of a tree to another by going through other parts that do not need the data, but only help in passing it through the tree.
+
+Before context, Redux came to solve this problem. In Redux, we have a concept called store which is an object that stores the global state of the application. It stores the data that we want to share across different components. Any component can get data from the store.
+
+With context, we can pass data down the component tree without Prop drilling. We will provide some context or shared data in one component and consume this context in another component. So, we will be dealing with providers and consumers.
