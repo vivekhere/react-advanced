@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MoviePage from "./context/moviePage";
 import UserContext from "./context/userContext";
+import CartContext from "./context/cartContext";
 import Login from "./context/login";
 import "./App.css";
 
@@ -15,17 +16,19 @@ class App extends Component {
 
   render() {
     return (
-      <UserContext.Provider
-        value={{
-          currentUser: this.state.currentUser,
-          onLoggedIn: this.handleLoggedIn,
-        }}
-      >
-        <div>
-          <MoviePage />
-          <Login />
-        </div>
-      </UserContext.Provider>
+      <CartContext.Provider value={{ cart: [] }}>
+        <UserContext.Provider
+          value={{
+            currentUser: this.state.currentUser,
+            onLoggedIn: this.handleLoggedIn,
+          }}
+        >
+          <div>
+            <MoviePage />
+            <Login />
+          </div>
+        </UserContext.Provider>
+      </CartContext.Provider>
     );
   }
 }
